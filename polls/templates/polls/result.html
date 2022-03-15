@@ -1,0 +1,50 @@
+{% extends 'parents.html' %}
+{% load static %}
+{% block title %} Result Page{% endblock title %}
+{% block scss %}  <link rel="stylesheet" href="{% static 'polls/css/result.css' %}">{% endblock scss %}
+
+{% block script %}
+<script>
+$(document).ready(function(){
+var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for choice in question.choice_set.all %} '{{choice.choice_text}}', {% endfor %}],
+            datasets: [{
+                label: 'Maximun Votes',
+                data: [{% for choice in question.choice_set.all %} {{choice.votes}}, {% endfor %}],
+                borderColor:'Green',
+                pointBackgroundColor:'blue',
+                backgroundColor:'#73C6B6',
+                pointRotaion:3,
+                pointRadius:5,
+                borderWidth: 2,
+            }]
+        },
+        options:{
+            responsive:false,
+            layout: {padding:{left:100, top:10, bottom:100}},
+            tooltips: {enabled:false},
+            title: {display:true, text: 'Top Treding Data Visualization', fontSize:25,},
+            animation: {duration:3900, easing:'easeInOutSine'}
+        },
+    });
+});
+</script>
+{% endblock script %}
+
+{% block content %}
+
+<div class="container mt-3">
+<h3>{{ question.question_text }}</h3>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li><h5>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</h5></li>
+{% endfor %}
+</ul>
+<h5><a href="{% url 'polls:home' %}">Vote again?</a></h5>
+<canvas id="myChart" width="700" height="501"></canvas>
+</div>
+{% endblock content %}
+

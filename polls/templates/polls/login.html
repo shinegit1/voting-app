@@ -1,0 +1,25 @@
+{% extends 'parents.html' %}
+{% load static %}
+{% block title %} User Login {% endblock title %}
+{% block scss %} <link rel="stylesheet" href=" {% static 'polls/css/login.css' %}"> {% endblock scss %} 
+{% block content %}
+
+<div class="container cont">
+ <div class="row mt-4 login">
+    <form action="" method="POST"> 
+
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %} <p> {{error}}</p> {% endfor %}
+    {% endif %}
+
+    {% for fm in form %}
+    {{fm.label_tag}} {{fm}} {{fm.errors|striptags}} <br> <br>
+    {% endfor %}
+
+    <input type="submit" class="btn btn-primary" value="Log In"> &nbsp &nbsp <h6> for New User <i class="far fa-hand-point-right"></i> </h6>
+   <a href="{% url 'polls:signup' %} "> Sign Up</a>
+    </form>
+ </div>
+</div>
+{% endblock content %}

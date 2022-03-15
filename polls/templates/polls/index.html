@@ -1,0 +1,20 @@
+{% extends 'parents.html' %}
+{% load static %}
+<title> {% block title %} Dashboard{% endblock title %} </title>
+{% block scss %}  <link rel="stylesheet" href="{% static 'polls/css/index.css' %}">{% endblock scss %}
+
+{% block content %}
+
+<div class="container mt-3">
+  {% if latest_question_list %}
+            <ol>
+            {% for question in latest_question_list %}
+                <h5><li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li></h5> <br>
+            {% endfor %}
+            </ol>
+        {% else %}
+        <p>No polls are available.</p>
+        {% endif %}
+</div>
+
+{% endblock content %}

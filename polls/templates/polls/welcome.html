@@ -1,0 +1,31 @@
+{% extends 'parents.html' %}
+{% load static %}
+<title> {% block title %} Welcome Page{% endblock title %} </title>
+{% block scss %}  <link rel="stylesheet" href="{% static 'polls/css/welcome.css' %}">{% endblock scss %}
+
+{% block content %}
+<div class="container mt-3">
+  <div class="row">
+    <h3>In this digital world can we imagine our lives without computers?</h3>
+    <div class="col-5">
+    <p class="para">
+    </p>With the world becoming more and more digital, the scope for Computer Science is on the rise. 
+    Developed countries pride themselves on having one of the highest technical human power in the world. The IT/CS 
+    sector is increasing rapidly in the world since the 20th century. Today's everyone should be familiar 
+    with all the basic computer skills to perform better while working. India has become the digital 
+    hub globally at around 75% of the world.<br><br>Learning and enhancing your skills are vital in this technological era. 
+    It helps you to prepare yourself for getting the highest paying jobs in the field of your choice. 
+    And if you are a professional already, learning new technologies and tools will take you an inch 
+    closer to the promotion you always dreamt it. Hence, it is necessary to know what's trending things 
+    are at the top in the world. That's why I have a voting survey for you. Before going to the voting 
+    survey, you have to log in here. <a href="{% url 'polls:login' %}">
+    <h6><i class="far fa-hand-point-right"></i> &nbsp Log In</h6>
+    </a>
+    </div>
+    <div class="col-5 contpic">
+    <img class="pics" src="{% static 'polls/images/pic3.jpeg' %}" alt="globally digital">
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

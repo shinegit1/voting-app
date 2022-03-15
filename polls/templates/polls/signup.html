@@ -1,0 +1,28 @@
+{% extends 'parents.html' %}
+{% load static %}
+{% block title %} User Registration {% endblock title %}
+{% block scss %} <link rel="stylesheet" href=" {% static 'polls/css/signup.css' %}"> {% endblock scss %}
+{% block content %}
+
+<div class="container">
+ 
+    <div class="row mt-5 cont">
+    <form action="" method="post"> {% csrf_token %}
+
+    {% for fm in form %}
+        <p>{{fm.label_tag}} {{fm}} {{fm.errors|striptags}}</p> <br>
+    {% endfor %}
+    <input type="submit" class="btn btn-primary" value="Submit"> &nbsp &nbsp
+    <a href=" {% url 'polls:login' %}"> Log In</a>
+    </form>
+    
+    {% if messages %}
+    {% for message in messages %}
+    <small {% if message.tags %} {{message.tags}} {% endif %} >{{message}} </small>
+    {% endfor %}
+    {% endif %}
+   
+    </div>
+</div>
+
+{% endblock content %}

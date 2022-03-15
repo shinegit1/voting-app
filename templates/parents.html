@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {% endblock title %} </title>
+    <link rel="stylesheet" href=" {% static 'polls/css/bootstrap.css' %} ">
+    <link rel="stylesheet" href=" {% static 'polls/css/all.css' %} ">
+    {% block scss %}  
+      <link rel="stylesheet" href=" {% static '' %} "> 
+      {% endblock scss %}
+    <script src=" {% static 'polls/js/bootstrap.js' %} "></script>
+    <script src=" {% static 'polls/js/popper.js' %} "></script>
+    <script src=" {% static 'polls/js/jquery.js' %} "></script>
+    <script src=" {% static 'polls/js/all.js' %} "></script>
+    <script src="{% static 'polls/js/chart.js' %} "></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item"><a class="nav-link" href=" {% url 'polls:welcome' %}">Home</a></li>
+    {% if user.is_authenticated %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'polls:home' %} "> Survey Dashboard</a> </li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'polls:logout' %} "> Log Out</a></li>
+    {% else %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'polls:login' %} "> Log In</a></li>
+    {% endif %}
+    </ul>
+  </div>
+</nav>
+
+  {% block script %}
+  {% endblock script %}
+
+  {% block content %}
+
+  {% endblock content %}
+
+</body>
+</html>

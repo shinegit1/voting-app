@@ -1,0 +1,10 @@
+# This is voting app project which is quite fun
+
+# First user should authenticate youserlf to go in profile page
+
+# Profile page has a list of some questions based on things which are compete in the market.
+
+# User can votes and see result in also a graph after the vote.
+
+# username -sonam
+#password-admin

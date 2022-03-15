@@ -1,0 +1,20 @@
+body{
+    background-color: #00ffbf;
+}
+.content{
+    width:500px;
+}
+
+.para{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.contpic{
+    margin-right: auto;
+    margin-top: 20px;
+}
+.pics{
+    height: 380px;
+    padding-left: 20px;
+
+}
